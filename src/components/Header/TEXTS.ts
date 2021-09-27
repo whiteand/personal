@@ -4,8 +4,9 @@ export const TEXTS: string[] = [
   " likes algorithms",
   " likes create custom charts",
   " ready to help",
-  " is a frontend developer by profession",
+  " is a frontend developer",
   " has a diploma from NTUU KPI",
+  " practise shader programming here",
   " lives in Kyiv",
   " love his wife",
 ];

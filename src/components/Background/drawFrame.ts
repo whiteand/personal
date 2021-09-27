@@ -36,7 +36,7 @@ const VERTEX_SHADER = `
 `;
 
 const FRAGMENT_SHADER = `
-  precision mediump float;
+  precision highp float;
 
   uniform vec2 uMousePos;
   uniform vec2 uResolution;
@@ -46,7 +46,7 @@ const FRAGMENT_SHADER = `
   void main() {
     float d = distance(gl_FragCoord.xy, uMousePos.xy);
     vec2 dir = normalize(uMousePos.xy - gl_FragCoord.xy);
-    vec2 pos = gl_FragCoord.xy + dir * 200000.0 / d / d;
+    vec2 pos = gl_FragCoord.xy + dir * 400000.0 / d / d;
     int xrem = int((pos.x - floor(pos.x / N) * N));
     int yrem = int((pos.y - floor(pos.y / N) * N));
     if (xrem < 1 && yrem < 1) {
