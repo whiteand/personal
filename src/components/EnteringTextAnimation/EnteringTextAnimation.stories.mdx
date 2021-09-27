@@ -1,0 +1,34 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks'
+import EnteringTextAnimation from './EnteringTextAnimation'
+
+<Meta title="Entering Text animation" component={EnteringTextAnimation} />
+
+# Entering Text Animation
+
+This component renders text and vertical line cursor.
+
+If we pass `texts=[]` `null` is returned.
+
+<Canvas>
+  <Story name="Empty Texts">
+    <EnteringTextAnimation texts={[]} />
+  </Story>
+</Canvas>
+
+We can set one text.
+
+<Canvas>
+  <Story name="One Text">
+    <EnteringTextAnimation texts={['Codify is best']} />
+  </Story>
+</Canvas>
+
+We can set several texts.
+
+<Canvas>
+  <Story name="Several Texts">
+    <EnteringTextAnimation
+      texts={['Codify is best', 'Codify is fun', 'Codify is adventure']}
+    />
+  </Story>
+</Canvas>
