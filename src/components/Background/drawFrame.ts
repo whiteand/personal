@@ -38,24 +38,17 @@ const VERTEX_SHADER = `
 const FRAGMENT_SHADER = `
   precision mediump float;
 
-  uniform ivec2 uMousePos;
-  uniform ivec2 uResolution;
+  uniform vec2 uMousePos;
+  uniform vec2 uResolution;
 
-  float N = 50.0;
-
-  float applyForce(float x, float cx) {
-    float d = abs(x - cx);
-    if (d < 100.0) {
-      return x;
-    }
-    return x * 0.9;
-  }
+  float N = 30.0;
 
   void main() {
-    float x = applyForce(gl_FragCoord.x, float(uMousePos.x));
-    float y = applyForce(gl_FragCoord.y, float(uMousePos.y));
-    int xrem = int((x - floor(x / N) * N));
-    int yrem = int((y - floor(y / N) * N));
+    float d = distance(gl_FragCoord.xy, uMousePos.xy);
+    vec2 dir = normalize(uMousePos.xy - gl_FragCoord.xy);
+    vec2 pos = gl_FragCoord.xy + dir * 200000.0 / d / d;
+    int xrem = int((pos.x - floor(pos.x / N) * N));
+    int yrem = int((pos.y - floor(pos.y / N) * N));
     if (xrem < 1 && yrem < 1) {
       gl_FragColor = vec4(0.0, 0.0, 1.0, 1.0);
     } else {
@@ -124,11 +117,11 @@ export async function getDrawFrame(
           0,
           0
         );
-        gl.uniform2iv(mousePosLoc, [
+        gl.uniform2fv(mousePosLoc, [
           Math.floor(state.pointer.x),
-          Math.floor(state.pointer.y),
+          state.height - Math.floor(state.pointer.y),
         ]);
-        gl.uniform2iv(resolutionLoc, [state.width, state.height]);
+        gl.uniform2fv(resolutionLoc, [state.width, state.height]);
         gl.drawArrays(gl.TRIANGLES, 0, positions.length / pointDimensions);
       });
     })

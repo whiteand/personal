@@ -8,7 +8,7 @@ export function update(state: IState, currentTime: number) {
   const dx = state.mouseX - state.pointer.x;
   const d = Math.hypot(dx, dy);
   const angle = Math.atan2(dy, dx);
-  state.pointer.ax = d > 1 ? Math.cos(angle) / 5000 : 0;
-  state.pointer.ay = d > 1 ? Math.sin(angle) / 5000 : 0;
+  state.pointer.vx = d > 1 ? Math.cos(angle) : 0;
+  state.pointer.vy = d > 1 ? Math.sin(angle) : 0;
   state.pointer.update(currentTime);
 }
