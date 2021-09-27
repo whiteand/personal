@@ -15,13 +15,13 @@ export default function Background() {
     pointer: new SceneObject(
       window.innerWidth / 2,
       window.innerHeight / 2,
-      0,
-      0,
+      Math.random() * 1e-1,
+      Math.random() * 1e-1,
       0,
       0
     ),
-    mouseX: window.innerWidth / 2,
-    mouseY: window.innerHeight / 2,
+    mouseX: 0,
+    mouseY: 0,
   });
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -74,6 +74,12 @@ export default function Background() {
         stateRef.current.mouseX = event.clientX;
         stateRef.current.mouseY = event.clientY;
       }
+    );
+    sub.add(
+      fromEvent<MouseEvent>(window, "mouseleave").subscribe(() => {
+        stateRef.current.mouseX = 0;
+        stateRef.current.mouseY = 0;
+      })
     );
     return () => {
       sub.unsubscribe();
