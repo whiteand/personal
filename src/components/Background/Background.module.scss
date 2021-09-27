@@ -4,6 +4,6 @@
   left: 0;
   right: 0;
   bottom: 0;
-  mix-blend-mode: multiply;
-  z-index: 1;
+  pointer-events: none;
+  z-index: -1;
 }
