@@ -1,7 +1,7 @@
 export const TEXTS: string[] = [
   " likes programming",
   " likes algorithms",
-  " likes create custom charts",
+  " likes to create custom charts",
   " likes making custom charts",
   " likes rxjs",
   " likes geometry",
