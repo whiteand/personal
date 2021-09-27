@@ -49,8 +49,8 @@ const FRAGMENT_SHADER = `
     vec2 pos = gl_FragCoord.xy + dir * 400000.0 / d / d;
     int xrem = int((pos.x - floor(pos.x / N) * N));
     int yrem = int((pos.y - floor(pos.y / N) * N));
-    if (xrem < 1 && yrem < 1) {
-      gl_FragColor = vec4(0.0, 0.0, 1.0, 1.0);
+    if (xrem < 2 && yrem < 2) {
+      gl_FragColor = vec4(0.1, 0.4, 1.0, 1.0);
     } else {
       gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
     }
