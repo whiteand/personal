@@ -10,7 +10,7 @@ export const TEXTS: string[] = [
   " plays the violin",
   " ready to help",
   " is a frontend developer",
-  " has a diploma from NTUU KPI",
+  " has a bachelor degree in Software Engineering",
   " practise shader programming here",
   " lives in Kyiv",
   " love his wife",
