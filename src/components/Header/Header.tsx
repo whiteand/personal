@@ -6,7 +6,7 @@ export default function Header() {
   return (
     <header className={s.header}>
       <div>
-        Andrew Beletskiy
+        <span>My name is Andrew Beletskiy</span>
         <br />
         <EnteringTextAnimation texts={TEXTS} />
       </div>
