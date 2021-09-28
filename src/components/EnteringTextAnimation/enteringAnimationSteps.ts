@@ -6,14 +6,24 @@ interface IEnteringAnimationStep {
   nextStepTimeout: number;
 }
 
+function getCommonPrefix(str1: string, str2: string): string {
+  let i = 0;
+  const minLength = Math.min(str1.length, str2.length);
+  while (str1[i] === str2[i] && i < minLength) i++;
+  return str1.slice(0, i);
+}
+
 export function* enteringAnimationSteps(
   texts: string[]
 ): Generator<IEnteringAnimationStep, void, unknown> {
   if (texts.length <= 0) return;
+  let currentState = "";
   while (true) {
     for (let i = 0; i < texts.length; i++) {
       const currentWord = texts[i];
-      for (let j = 0; j < currentWord.length; j++) {
+
+      for (let j = currentState.length; j < currentWord.length; j++) {
+        currentState = currentWord.slice(0, j);
         yield {
           cursorState: CursorState.Idle,
           text: currentWord.slice(0, j),
@@ -25,10 +35,15 @@ export function* enteringAnimationSteps(
         text: currentWord,
         nextStepTimeout: 4000,
       };
-      for (let j = currentWord.length - 1; j >= 0; j--) {
+
+      const nextWord = texts[(i + 1) % texts.length];
+      const commonPrefix = getCommonPrefix(nextWord, currentWord);
+
+      for (let j = currentWord.length - 1; j >= commonPrefix.length; j--) {
+        currentState = currentWord.slice(0, j);
         yield {
           cursorState: CursorState.Idle,
-          text: currentWord.slice(0, j),
+          text: currentState,
           nextStepTimeout: 50,
         };
       }

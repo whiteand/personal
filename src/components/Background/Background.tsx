@@ -76,7 +76,7 @@ export default function Background() {
       }
     );
     sub.add(
-      fromEvent<MouseEvent>(window, "mouseleave").subscribe(() => {
+      fromEvent<MouseEvent>(window, "mouseout").subscribe(() => {
         stateRef.current.mouseX = 0;
         stateRef.current.mouseY = 0;
       })

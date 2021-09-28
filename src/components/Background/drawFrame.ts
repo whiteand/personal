@@ -47,11 +47,14 @@ const FRAGMENT_SHADER = `
   void main() {
     float d = distance(gl_FragCoord.xy, uMousePos.xy);
     vec2 dir = normalize(uMousePos.xy - gl_FragCoord.xy);
-    float force = 2000000.0 * (sin(uTime / 40.0)+1.0);
+    float force = 1500000.0 * (sin(uTime / 40.0)+1.0);
     vec2 pos = gl_FragCoord.xy + dir * force / d / d;
-    int xrem = int((pos.x - floor(pos.x / N) * N)) ;
-    int yrem = int((pos.y - floor(pos.y / N) * N));
-    if (xrem < 5 && yrem < 5) {
+    float xrem = (pos.x - floor(pos.x / N) * N);
+    float yrem = (pos.y - floor(pos.y / N) * N);
+    float dx = abs(xrem - 30.0);
+    float dy = abs(yrem - 30.0);
+    float dr = dx * dx + dy * dy;
+    if (dr <= 10.0) {
       gl_FragColor = vec4(0.4, 0.8, 1.0, 1.0);
     } else {
       gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);

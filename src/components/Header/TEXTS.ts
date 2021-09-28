@@ -8,10 +8,10 @@ export const TEXTS: string[] = [
   " likes math",
   " likes engineering",
   " plays the violin",
-  " ready to help",
+  " is ready to help",
   " is a frontend developer",
   " has a bachelor degree in Software Engineering",
-  " practise shader programming here",
+  " practises shader programming here",
   " lives in Kyiv",
-  " love his wife",
+  " loves his wife",
 ];
