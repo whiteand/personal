@@ -11,6 +11,6 @@ export const TEXTS: string[] = [
   "I am a frontend developer",
   "I have a bachelor degree in Software Engineering",
   "I practise shader programming here",
-  "I live in Kyiv",
+  "I live in Lviv",
   "I love my wife",
 ];
